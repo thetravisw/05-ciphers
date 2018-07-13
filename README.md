@@ -1,11 +1,11 @@
 # ![CF](http://i.imgur.com/7v5ASc8.png) Ciphers
 
+**Cipher:** a secret or disguised way of writing; a code.
+
 ## Resources  
 * [Wikipedia: ROT13](https://en.wikipedia.org/wiki/ROT13)
 * [Caeser ShiftCipher](http://practicalcryptography.com/ciphers/caesar-cipher/)
 * [Wikipedia: Keyword Cipher](https://en.wikipedia.org/wiki/Keyword_cipher)
-
-**Cipher:** a secret or disguised way of writing; a code.
 
 ## Feature Tasks
 For this assignment you will be implementing various ciphers to encode and
@@ -19,7 +19,7 @@ Your program should handle input gracefully. Use `try-catch` statements to
 prevent the program from crashing when users enter bad input and print out
 helpful error messages instead.
 
-User inheritance to implement a base `Cipher` class then have other
+Use inheritance to implement a base `Cipher` class then have other
 cipher classes extend from there.
 
 ## Requirements
@@ -53,7 +53,7 @@ public String decode(String payload) {}
 protected String replaceCharacters(String payload, String source, String target) {
 ```
 
-Each other cipher class extends from `Cipher`. Each other class should
+Every other cipher class extends from `Cipher`. Each extended class (the sub-classes) should
 override the `encode` and `decode` methods, but use the inherited
 `replaceCharacters` utility method to perform the character replacement.
 
@@ -69,7 +69,7 @@ Notice that `replaceCharacters` is marked as `protected`. No one outside the
 `Cipher` class should need to call `replaceCharacters` directly.
 Anyone outside the class should instead interact with the cipher class via
 the public `encode` and `decode` methods. The `replaceCharacters` method is not
-marked as just `private` because we want to make the method available to the
+marked as `private` because we want to make the method available to the
 sub-classes.
 
 The `public static final String ALPHABET` property is made available so all
@@ -109,8 +109,8 @@ store them as private properties of the class.
     (whitespace, numbers, punctuation).
 
 ## Main.java CLI Tips
-You will want to define a strategy for solving the problem before you begin to
-code. Once you have a strategy defined, you can break it into steps that can be
+You will want to define a strategy for solving the problem **before you begin to
+code.** Once you have a strategy defined, you can break it into steps that can be
 split into helper methods. Each helper method should solve a small specific
 problem. The main method should utilize the helper modules to execute your
 original strategy.
