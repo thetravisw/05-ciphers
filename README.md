@@ -19,7 +19,7 @@ Your program should handle input gracefully. Use `try-catch` statements to
 prevent the program from crashing when users enter bad input and print out
 helpful error messages instead.
 
-User inheritance to implement a base `PlainTextCipher` class then have other
+User inheritance to implement a base `Cipher` class then have other
 cipher classes extend from there.
 
 ## Requirements
@@ -27,7 +27,7 @@ Your project structure should contain the following classes and package:
 
 * `Main.java` as the main file that handles command line input.
 * `ciphers` package
-  * `PlainTextCipher.java`
+  * `Cipher.java`
   * `ROT13Cipher.java`
   * `CaesarShiftCipher.java`
   * `KeywordCipher.java`
@@ -38,12 +38,12 @@ Refer to the resource links above to see the exact details of each cipher.
 * You may assume all text in the ciphers is always lowercase.
 * You may not assume text does not contain spaces or punctuation.
 
-#### The PlainTextCipher
-The `PlainTextCipher` listed here just encodes and decodes alphabetic
+#### The Plain Text Cipher Base Class
+The `Cipher` base class listed here just encodes and decodes alphabetic
 characters to themselves. It maps "a" to "a" in encoding and maps "a"
 back to "a" when decoding, for all letters.
 
-The `PLainTextCipher` class should have the following properties and methods:
+The `Cipher` class should have the following properties and methods:
 
 ```java
 public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
@@ -53,7 +53,7 @@ public String decode(String payload) {}
 protected String replaceCharacters(String payload, String source, String target) {
 ```
 
-Each other cipher class extends from `PlainTextCipher`. Each other class should
+Each other cipher class extends from `Cipher`. Each other class should
 override the `encode` and `decode` methods, but use the inherited
 `replaceCharacters` utility method to perform the character replacement.
 
@@ -66,7 +66,7 @@ Reminder:
   extending from the current class.
 
 Notice that `replaceCharacters` is marked as `protected`. No one outside the
-`PlainTextCipher` class should need to call `replaceCharacters` directly.
+`Cipher` class should need to call `replaceCharacters` directly.
 Anyone outside the class should instead interact with the cipher class via
 the public `encode` and `decode` methods. The `replaceCharacters` method is not
 marked as just `private` because we want to make the method available to the
@@ -84,12 +84,12 @@ parameters to pass to the `replaceCharacters` function.
 
 The cipher classes should have the following signatures for their constructors:
 
-* `public PlainTextCipher()`
+* `public Cipher()`
 * `public ROT13Cipher()`
 * `public CaesarShiftCipher(int shiftAmount)`
 * `public KeywordCipher(String keyword)`
 
-The `PlainTextCipher` and the `ROT13Cipher` don't have parameters for their
+The `Cipher` and the `ROT13Cipher` classes don't have parameters for their
 constructors because they're unconfigurable, they always behave the same.
 
 The `CaesarShiftCipher` and `KeywordCipher` accept parameters for their
