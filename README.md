@@ -77,6 +77,26 @@ other cipher classes have a convenient access to the alphabet and you don't
 have to rewrite that over and over. The `final` keyword prevents the variable
 from ever changing, like `const` in JavaScript.
 
+## Implementing the Ciphers
+Each cipher should generate it's own replacement alphabet when it's
+constructed. It will use the original alphabet and the replacement alphabet as
+parameters to pass to the `replaceCharacters` function.
+
+The cipher classes should have the following signatures for their constructors:
+
+* `public PlainTextCipher()`
+* `public ROT13Cipher()`
+* `public CaesarShiftCipher(int shiftAmount)`
+* `public KeywordCipher(String keyword)`
+
+The `PlainTextCipher` and the `ROT13Cipher` don't have parameters for their
+constructors because they're unconfigurable, they always behave the same.
+
+The `CaesarShiftCipher` and `KeywordCipher` accept parameters for their
+constructor because they are configurable. Use the constructor as a place to
+generate the plaintext-to-ciphertext (and vice versa) alphabet mappings and
+store them as private properties of the class.
+
 ## Testing
 * Write unit tests for each type of cipher.
 * Test cases should include
@@ -226,3 +246,12 @@ ciphertext: ph'l phbaqwk my!
 * Open a pull request to this repository
 * Submit on canvas a question and observation, how long you spent, and a link to
   your pull request
+
+## Stretch Goals
+* Rearrange the ROT13 cipher so it's a subclass of the Caesar Shift cipher that
+  always creates itself with a shift of `13`.
+* Configure the `replaceCharacters` method to preserve capitalization.
+* Configure the program to accept command line arguments via `main(String[] args)`
+* Configure the program to allow users to enter filenames for their plaintext
+  or ciphertext input.
+
